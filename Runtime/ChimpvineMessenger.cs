@@ -14,6 +14,7 @@ namespace Chimpvine.WebClient
     public class ChimpvineMessenger : MonoSingleton<ChimpvineMessenger>
     {
         string APIPath = "/StaticAssestsForContents/gameAssets/API/game_data_path.php";
+        [SerializeField] string localPath = "https://np.chimpvine.com";
 
         
         #region Private Variables
@@ -188,7 +189,7 @@ namespace Chimpvine.WebClient
             }
 #else
 
-            using (UnityWebRequest req = UnityWebRequest.Get("https://np.chimpvine.com" + APIPath))
+            using (UnityWebRequest req = UnityWebRequest.Get(localPath+ APIPath))
             {
                 yield return req.SendWebRequest();
                 if (req.isNetworkError || req.isHttpError)
